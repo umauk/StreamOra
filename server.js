@@ -32,20 +32,21 @@ app.get("/api/streamora/user",async(req,res)=>{
 
 })
 
-app.delete("/api/streamora/user/:email",async(req,res)=>{
+app.delete("/api/streamora/user/:id",async(req,res)=>{
     console.log(req.params)
-    await User.findOneAndDelete({email:req.params.email})
+    await User.findByIdAndDelete(req.params.id)
     res.status(204).json({
         status:"success",
         data:null
     })
 })
 
-app.patch("/api/streamora/user/:email",async(req,res)=>{
-    const user = await User.findOneAndUpdate(
-        { email: req.params.email }, 
-        { $set: req.body },          
-        { new: true } 
+app.patch("/api/streamora/user/:id",async(req,res)=>{
+    const user = await User.findByIdAndUpdate(
+    req.params.id , 
+        req.body ,
+        {new:true}        
+          
       );
     res.status(200).json({
         status:"success",
