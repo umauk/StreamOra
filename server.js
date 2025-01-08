@@ -6,7 +6,7 @@ const User=require('./src/Models/streamModel')
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://rajeshtanni2001:njfCVdf70ODK7j57@rajesh.7pfdg.mongodb.net/Stream").then(()=>{
+mongoose.connect("mongodb://localhost:27017/streamora").then(()=>{
     console.log("connected to database")
 })
 
